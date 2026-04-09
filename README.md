@@ -1,70 +1,96 @@
 # 🔫 Buckshot Oracle
 
-> "It’s probably a blank."  
-> famous last words
+> "There’s no way it’s red again."  
+> — incorrect
 
-Buckshot Oracle is a small helper tool for Buckshot Roulette.  
-It keeps track of what’s going on, estimates the odds, and gives you a second opinion before you do something stupid.
+A small desktop assistant for Buckshot Roulette that keeps track of the game, estimates probabilities, and learns from your runs over time.
 
 ---
 
 ## 🧠 What it does
 
-- Calculates the probability of live vs blank shells  
-- Tracks the current game state  
-- Suggests possible moves based on available info  
+- Estimates odds of red / blue shells using a simple Bayesian model  
+- Adjusts its internal weights based on past outcomes  
+- Tracks your current round (remaining shells, history, etc.)  
+- Logs sessions so you can review what actually happened  
 
-Nothing magical — just less guessing, more numbers.
-
----
-
-## ⚙️ Features
-
-- Probability estimation based on known shells  
-- Simple decision suggestions  
-- Lightweight game state tracking  
-- Risk evaluation (aka “how bad is this move?”)
+It’s not perfect, but it’s better than guessing.
 
 ---
 
-## 🕹️ Why?
+## ⚙️ How it works
 
-Because at some point you stop trusting your gut.
+At its core, the tool combines:
+- current shell distribution (what’s left in the round)  
+- learned weights from previous games  
+- basic Bayesian updating  
+
+After each reveal, it slightly adjusts its expectations depending on whether the prediction was correct.
+
+Over time, it builds its own bias based on your games.
+
+---
+
+## 🖥️ Features
+
+- Real-time probability display  
+- Prediction for the next shell  
+- Round history (last shots)  
+- Session stats (accuracy, correct / wrong guesses)  
+- Item tracking (records which items were useful or not)  
+- Inverter support (flips the next prediction)  
+- Persistent learning via local JSON storage  
+
+---
+
+## 📂 Data
+
+The assistant stores its state locally:
+
+- shell weights  
+- item usage stats  
+- round history (last ~100 runs)  
+
+If things get weird, you can always reset everything.
 
 ---
 
 ## 🚀 Usage
 
-1. Run the tool  
-2. Input the current state of the game  
-3. Check the suggested move  
-4. Decide if you trust it  
+1. Start a new round  
+2. Enter the number of red / blue shells  
+3. (Optional) add items  
+4. Follow predictions and log outcomes as you play  
+
+That’s it.
 
 ---
 
 ## ⚠️ Disclaimer
 
-This won’t guarantee you a win.  
-It just makes your decisions slightly less random.
+This doesn’t “solve” the game.
 
-If you lose — that’s still on you.
+It just gives you slightly more informed guesses.
+
+Bad decisions are still very much possible.
 
 ---
 
-## 🧪 Plans
+## 🧪 Notes
 
-- Better probability modeling  
-- Cleaner input / interface  
-- Maybe some automation later  
+- The learning system is intentionally lightweight  
+- Weights are normalized to avoid drifting too far  
+- Predictions can still flip due to randomness or edge cases  
 
 ---
 
 ## 🤝 Contributing
 
-If you have ideas or improvements — feel free to open a PR.
+If you want to tweak the model, improve the UI, or add features — go ahead.
 
 ---
 
 ## ⭐
 
-If you found it useful, consider starring the repo.
+Star it if it helped.  
+Ignore it if you lost anyway.
