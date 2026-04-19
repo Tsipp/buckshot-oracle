@@ -291,11 +291,13 @@ class BuckshotGUI:
 
     def _start_game(self, *, human_idx: Optional[int]) -> None:
         self.human_idx = human_idx
+        # Panel layout is fixed: opp_panel (top) renders players[1];
+        # you_panel (bottom) renders players[0]. Name assignment must match.
         if human_idx is None:
             self.opp_panel["name"].config(text="Bot-A", fg=Theme.RED)
             self.you_panel["name"].config(text="Bot-B", fg=Theme.BLUE)
             p1_bot, p2_bot = True, True
-            p1_name, p2_name = "Bot-A", "Bot-B"
+            p1_name, p2_name = "Bot-B", "Bot-A"
         else:
             self.opp_panel["name"].config(text="Dealer-Bot", fg=Theme.RED)
             self.you_panel["name"].config(text="You", fg=Theme.BLUE)
