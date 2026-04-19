@@ -93,11 +93,28 @@ saw, magnifying glass, beer, cigarettes, inverter) and lets you play
 against a probability-driven AI with no network required.
 
 ```bash
-python buckshot_bot.py               # play vs the bot
+python buckshot_bot.py               # play vs the bot (terminal)
 python buckshot_bot.py --watch       # watch the bot play itself
 python buckshot_bot.py --sim 1000    # run N bot-vs-bot games
 python buckshot_bot.py --seed 42     # deterministic shell order
 ```
+
+### 🎮 GUI version
+
+If you want a full "videogame" experience, [`buckshot_game.py`](./buckshot_game.py)
+wraps the same engine in a Tkinter window. You get HP dots, a live/blank
+shell row, clickable item buttons, and a scrolling action log. Two modes
+are available from the start menu:
+
+- **Play vs Bot** — you control the blue side; dealer-bot plays red.
+- **Watch Bot vs Bot** — sit back and watch the AI play itself.
+
+```bash
+python buckshot_game.py
+```
+
+Requires the Python `tkinter` module (install with
+`sudo apt-get install python3-tk` on Debian/Ubuntu).
 
 Smoke tests: `python -m pytest tests/`.
 
