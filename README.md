@@ -84,6 +84,25 @@ Bad decisions are still very much possible.
 
 ---
 
+## 🤖 Offline Bot
+
+In addition to the desktop Oracle, the repo ships with a self-contained
+terminal bot in [`buckshot_bot.py`](./buckshot_bot.py). It simulates the
+full Buckshot Roulette game loop (shells, HP, items — handcuffs, hand
+saw, magnifying glass, beer, cigarettes, inverter) and lets you play
+against a probability-driven AI with no network required.
+
+```bash
+python buckshot_bot.py               # play vs the bot
+python buckshot_bot.py --watch       # watch the bot play itself
+python buckshot_bot.py --sim 1000    # run N bot-vs-bot games
+python buckshot_bot.py --seed 42     # deterministic shell order
+```
+
+Smoke tests: `python -m pytest tests/`.
+
+---
+
 ## 🤝 Contributing
 
 If you want to tweak the model, improve the UI, or add features — go ahead.
